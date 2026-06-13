@@ -6,6 +6,21 @@ international results, predicts the remaining group fixtures, and runs a **Monte
 simulation** of the full 48-team tournament to estimate each nation's odds of advancing
 and lifting the trophy.
 
+## Project structure
+
+```
+.
+├── data/                 raw input CSVs (results, goalscorers, shootouts)
+├── outputs/              generated tables + charts (from the pipeline)
+├── frontend/             Next.js dashboard (see frontend/README.md)
+└── wc2026/               prediction engine (Python package)
+    ├── config.py         paths, name normalization, tournament + model constants
+    ├── data.py           load/clean CSVs, recover the 12 groups
+    ├── models/           elo · poisson (Dixon-Coles) · simulate (Monte-Carlo)
+    ├── api/              Flask app (app.py) + prediction service (service.py)
+    └── cli/              full pipeline (main.py) · historical backtest (validate.py)
+```
+
 ## Data
 
 Three CSVs in `data/` (international results 1872–2026):
@@ -57,8 +72,7 @@ Example:
 ```bash
 curl "http://127.0.0.1:5000/api/predict?home=Argentina&away=France"
 # {"home":"Argentina","away":"France","probabilities":{"home_win":0.47,"draw":0.30,"away_win":0.22},
-#  "expected_goals":{"home":1.27,"away":0.78},"most_likely_s
-core":"1-0", ...}
+#  "expected_goals":{"home":1.27,"away":0.78},"most_likely_score":"1-0", ...}
 ```
 
 Errors return JSON: unknown team or missing parameter → `400`, unknown route → `404`.
