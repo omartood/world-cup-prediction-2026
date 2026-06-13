@@ -8,13 +8,13 @@ and lifting the trophy.
 
 ## Data
 
-Three CSVs in the project root (international results 1872–2026):
+Three CSVs in `data/` (international results 1872–2026):
 
 | file | rows | contents |
 |------|------|----------|
-| `results.csv` | 49,478 | every international match, incl. the 2026 WC group fixtures (4 played, 68 to predict) |
-| `goalscorers.csv` | 47,614 | goal events (scorer, minute, penalty, own-goal) |
-| `shootouts.csv` | 678 | penalty-shootout winners |
+| `data/results.csv` | 49,478 | every international match, incl. the 2026 WC group fixtures (4 played, 68 to predict) |
+| `data/goalscorers.csv` | 47,614 | goal events (scorer, minute, penalty, own-goal) |
+| `data/shootouts.csv` | 678 | penalty-shootout winners |
 
 The 12 groups of 4 are **recovered from the fixture pairings** (connected components),
 since the dataset doesn't label group letters.
@@ -120,4 +120,4 @@ from the Monte-Carlo champion, which integrates over all possible paths.
 - The official A–L group letters and FIFA's exact third-place lookup table aren't in the
   dataset; the bracket is a structurally faithful, balanced 2026-format tree with
   same-group-rematch avoidance, not the literal official slotting.
-- Predictions reflect the data as of the latest results in `results.csv`.
+- Predictions reflect the data as of the latest results in `data/results.csv`.

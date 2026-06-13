@@ -14,9 +14,10 @@ import os
 # Paths
 # --------------------------------------------------------------------------------------
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-RESULTS_CSV = os.path.join(ROOT, "results.csv")
-GOALSCORERS_CSV = os.path.join(ROOT, "goalscorers.csv")
-SHOOTOUTS_CSV = os.path.join(ROOT, "shootouts.csv")
+DATA_DIR = os.path.join(ROOT, "data")
+RESULTS_CSV = os.path.join(DATA_DIR, "results.csv")
+GOALSCORERS_CSV = os.path.join(DATA_DIR, "goalscorers.csv")
+SHOOTOUTS_CSV = os.path.join(DATA_DIR, "shootouts.csv")
 OUTPUT_DIR = os.path.join(ROOT, "outputs")
 
 # --------------------------------------------------------------------------------------
