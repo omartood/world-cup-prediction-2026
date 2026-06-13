@@ -23,7 +23,7 @@ import pandas as pd
 from scipy.optimize import minimize, minimize_scalar
 from scipy.stats import poisson
 
-from . import config
+from .. import config
 from .elo import EloModel
 
 _L2 = 1.0  # ridge penalty on attack/defense effects

@@ -24,12 +24,12 @@ since the dataset doesn't label group letters.
 ```bash
 pip install -r requirements.txt
 
-python -m wc2026.data      # sanity: print recovered groups + played/unplayed split
-python -m wc2026.validate  # backtest vs WC 2014/2018/2022 (Dixon-Coles+Elo vs Elo baseline)
-python -m wc2026.main      # full pipeline -> tables + outputs/
+python -m wc2026.data          # sanity: print recovered groups + played/unplayed split
+python -m wc2026.cli.validate  # backtest vs WC 2014/2018/2022 (Dixon-Coles+Elo vs Elo baseline)
+python -m wc2026.cli.main      # full pipeline -> tables + outputs/
 ```
 
-`main` options: `--iterations N` (default 20,000), `--seed S`, `--no-charts`.
+`cli.main` options: `--iterations N` (default 20,000), `--seed S`, `--no-charts`.
 
 ## Backend API (Flask)
 
@@ -57,7 +57,8 @@ Example:
 ```bash
 curl "http://127.0.0.1:5000/api/predict?home=Argentina&away=France"
 # {"home":"Argentina","away":"France","probabilities":{"home_win":0.47,"draw":0.30,"away_win":0.22},
-#  "expected_goals":{"home":1.27,"away":0.78},"most_likely_score":"1-0", ...}
+#  "expected_goals":{"home":1.27,"away":0.78},"most_likely_s
+core":"1-0", ...}
 ```
 
 Errors return JSON: unknown team or missing parameter → `400`, unknown route → `404`.
@@ -88,13 +89,13 @@ See [`frontend/README.md`](frontend/README.md) for details.
 |--------|------|
 | `config.py` | paths, name normalization, tournament + model constants |
 | `data.py` | load/clean CSVs, recover the 12 groups, split played vs unplayed |
-| `elo.py` | football Elo (tournament-weighted K, margin-of-victory, home advantage) |
-| `poisson.py` | Dixon-Coles MLE (analytic gradients, time-decay weights, Elo covariate) → score matrix / W-D-L |
-| `simulate.py` | group standings (FIFA tiebreakers), qualifier selection, knockout bracket, Monte-Carlo driver |
-| `validate.py` | historical backtest with accuracy / log-loss / Brier vs an Elo baseline |
-| `service.py` | fits models once, caches the simulation, returns JSON-ready results |
-| `api.py` | Flask REST API (`create_app` factory) on top of the service |
-| `main.py` | CLI tying it together |
+| `models/elo.py` | football Elo (tournament-weighted K, margin-of-victory, home advantage) |
+| `models/poisson.py` | Dixon-Coles MLE (analytic gradients, time-decay weights, Elo covariate) → score matrix / W-D-L |
+| `models/simulate.py` | group standings (FIFA tiebreakers), qualifier selection, knockout bracket, Monte-Carlo driver |
+| `api/service.py` | fits models once, caches the simulation, returns JSON-ready results |
+| `api/app.py` | Flask REST API (`create_app` factory) on top of the service |
+| `cli/main.py` | CLI tying the full pipeline together |
+| `cli/validate.py` | historical backtest with accuracy / log-loss / Brier vs an Elo baseline |
 
 **Model.** Expected goals for each side come from
 `log λ = c + attack − defense + home_adv + w·(Elo diff)`, fit by weighted maximum

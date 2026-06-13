@@ -12,10 +12,9 @@ import numpy as np
 import pandas as pd
 from scipy.optimize import minimize
 
-from . import config
-from .data import load_results, played_matches
-from .elo import EloModel, expected_score
-from .poisson import PoissonModel
+from .. import config
+from ..data import load_results, played_matches
+from ..models import EloModel, expected_score, PoissonModel
 
 # Tournament -> first match date (train strictly before this).
 WC_BACKTESTS = {

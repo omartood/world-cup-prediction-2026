@@ -21,7 +21,7 @@ from __future__ import annotations
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
-from . import config
+from .. import config
 from .service import UnknownTeamError, get_service
 
 

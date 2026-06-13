@@ -10,7 +10,7 @@ from __future__ import annotations
 
 import pandas as pd
 
-from . import config
+from .. import config
 
 
 def _k_factor(tournament: str) -> float:

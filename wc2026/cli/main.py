@@ -1,7 +1,7 @@
 """End-to-end WC-2026 prediction pipeline.
 
 Usage:
-    python -m wc2026.main [--iterations N] [--seed S] [--no-charts]
+    python -m wc2026.cli.main [--iterations N] [--seed S] [--no-charts]
 
 Steps: load + clean data, recover groups, fit Elo and Dixon-Coles models, predict the
 remaining group fixtures, then Monte-Carlo simulate the whole tournament. Writes results
@@ -15,12 +15,10 @@ import os
 
 import pandas as pd
 
-from . import config
-from .data import derive_groups, load_results, played_matches
-from .elo import EloModel
-from .poisson import PoissonModel
-from .service import predict_group_fixtures
-from .simulate import Simulator
+from .. import config
+from ..data import derive_groups, load_results, played_matches
+from ..models import EloModel, PoissonModel, Simulator
+from ..api.service import predict_group_fixtures
 
 
 def group_predictions_frame(struct, model: PoissonModel) -> pd.DataFrame:

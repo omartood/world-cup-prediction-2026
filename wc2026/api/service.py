@@ -11,11 +11,9 @@ import threading
 
 import numpy as np
 
-from . import config
-from .data import derive_groups, load_results, played_matches
-from .elo import EloModel
-from .poisson import PoissonModel
-from .simulate import Simulator
+from .. import config
+from ..data import derive_groups, load_results, played_matches
+from ..models import EloModel, PoissonModel, Simulator
 
 
 def predict_group_fixtures(struct, model: PoissonModel) -> list[dict]:

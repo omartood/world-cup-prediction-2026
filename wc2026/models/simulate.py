@@ -17,8 +17,8 @@ from collections import defaultdict
 
 import numpy as np
 
-from . import config
-from .data import TournamentStructure
+from .. import config
+from ..data import TournamentStructure
 from .elo import EloModel, expected_score
 from .poisson import PoissonModel
 
