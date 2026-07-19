@@ -1,10 +1,29 @@
 # FIFA World Cup 2026 — Prediction Engine
 
+![Spain victory celebration](assets/spain-victory-banner.svg)
+
+<p align="center">
+  <img alt="Prediction confirmed" src="https://img.shields.io/badge/prediction-confirmed-ffc400?style=for-the-badge&labelColor=c60b1e&color=ffc400">
+  <img alt="Spain champions" src="https://img.shields.io/badge/Spain-champions-c60b1e?style=for-the-badge&labelColor=111827&color=c60b1e">
+  <img alt="Monte Carlo model" src="https://img.shields.io/badge/Monte--Carlo-simulation-1d6f42?style=for-the-badge&labelColor=111827&color=1d6f42">
+</p>
+
 A from-scratch Python engine that predicts the 2026 World Cup. It fits a **Dixon-Coles
 bivariate-Poisson goal model with an Elo strength covariate** to ~150 years of
 international results, predicts the remaining group fixtures, and runs a **Monte-Carlo
 simulation** of the full 48-team tournament to estimate each nation's odds of advancing
 and lifting the trophy.
+
+## Spain Victory Celebration
+
+> **Hambalyo weyn Spain.** Model-kan saadaasha wuxuu hore u muujiyey in Spain ay
+> fursad xooggan u leedahay inay koobka qaaddo, saadaashiina way rumowday.
+
+Mahadsanidiin dhammaan fans-ka taageeray mashruucan, la socday saadaasha, lana
+wadaagay xiisaha kubadda cagta. Guushan Spain waa caddeyn kale oo muujinaysa in
+xogta, falanqaynta, iyo jacaylka ciyaartu ay abuuri karaan sheeko qurux badan.
+
+**Vamos Spain. Hambalyo champions!**
 
 ## Project structure
 
